@@ -9,7 +9,7 @@ function hiddendoors.register_door(material, name)
 	climbable = true,
 	is_ground_content = false,
 	inventory_image = "hiddendoors_" .. material .. "_inventory.png",
-	tiles = {"hiddendoors_" .. material .. ".png"},
+	tiles = {"default_" .. material .. ".png"},
 	groups = {cracky = 2},
 	})
 	
