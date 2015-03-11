@@ -30,10 +30,10 @@ end
 
 hiddendoors.register_door("default", "obsidian", "Obsidian")
 hiddendoors.register_door("default", "stone", "Stone")
-hiddendoors.register_door("default", "desert_stone_brick", "Desert Stone Brick")
+hiddendoors.register_door("default", "desert_stone_brick", "Desert Stone Brick","default_desert_stone_brick.png")
 hiddendoors.register_door("default", "stone_brick", "Stone Brick")
 hiddendoors.register_door("default", "tree", "Tree")
 hiddendoors.register_door("default", "dirt", "Dirt")
-hiddendoors.register_door("default", "desert_stone", "Desert Stone","default_desert_stone_brick.png")
+hiddendoors.register_door("default", "desert_stone", "Desert Stone")
 hiddendoors.register_door("default", "brick", "Brick")
 hiddendoors.register_door("default", "wood", "Wood")
