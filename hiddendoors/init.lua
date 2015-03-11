@@ -8,7 +8,7 @@ function hiddendoors.register_door(modname, nodename, description, texture) -- t
 	walkable = false,
 	climbable = true,
 	is_ground_content = false,
-	inventory_image = "hiddendoors_" .. material .. "_inventory.png",
+	inventory_image = "hiddendoors_" .. nodename .. "_" .. modname .. "_inventory.png",
 	tiles = 
 		if texture == nil then
 			{modname .. "_" .. material .. ".png"},
