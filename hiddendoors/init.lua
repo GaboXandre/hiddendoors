@@ -2,7 +2,7 @@
 
 hiddendoors = {}
 
-function hiddendoors.register_door(modname, nodename, description, texture) -- texture is optional, for when a mod does not follow naming conventions.
+function hiddendoors.register_door(modname, nodename, description, tiles)
 	minetest.register_node("hiddendoors:" .. nodename .. "_" .. modname, {
 	description = name .. " Hidden Door",
 	walkable = false,
@@ -28,12 +28,23 @@ function hiddendoors.register_door(modname, nodename, description, texture) -- t
 	})
 end
 
-hiddendoors.register_door("default", "obsidian", "Obsidian")
-hiddendoors.register_door("default", "stone", "Stone")
-hiddendoors.register_door("default", "desert_stone_brick", "Desert Stone Brick","default_desert_stone_brick.png")
-hiddendoors.register_door("default", "stone_brick", "Stone Brick")
-hiddendoors.register_door("default", "tree", "Tree")
-hiddendoors.register_door("default", "dirt", "Dirt")
-hiddendoors.register_door("default", "desert_stone", "Desert Stone")
-hiddendoors.register_door("default", "brick", "Brick")
-hiddendoors.register_door("default", "wood", "Wood")
+-- Default nodes
+
+local default_nodes = {
+	{"stone", "stone"},
+	{"brick", "brick"},
+	{"desert_stone", "desert_stone"},
+	{"tree", "tree"},
+	{"dirt","dirt},
+	{"wood", "wood"},
+	{"obsidian", "obsidian"},
+	{"stonebrick", "stone_brick"},
+	{"desert_stonebrick", "desert_stone_brick"},
+}
+
+for _, row in pairs(default_nodes) do
+	local nodename = "default:" ..row[1]
+	local ndef = minetest.registered_nodes[nodename]
+	local texture = "default_" ..row[2].. ".png"
+	hiddendoors.register_door("default", row[1], ndef.description, texture) 
+end
