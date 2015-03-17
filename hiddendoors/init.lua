@@ -2,33 +2,43 @@
 
 hiddendoors = {}
 
-function hiddendoors.register_door(material, name)
-	minetest.register_node("hiddendoors:" .. material, {
+function hiddendoors.register_door(modname, nodename, description, tiles)
+	minetest.register_node("hiddendoors:" .. nodename .. "_" .. modname, {
 	description = name .. " Hidden Door",
 	walkable = false,
 	climbable = true,
 	is_ground_content = false,
-	inventory_image = "hiddendoors_" .. material .. "_inventory.png",
-	tiles = {"default_" .. material .. ".png"},
+	inventory_image = "hiddendoors_" .. nodename .. "_" .. modname .. "_inventory.png",
+	tiles = {tiles}
 	groups = {cracky = 2},
 	})
 	
 	minetest.register_craft({
-		output = "hiddendoors:" .. material .. " 2",
+		output = "hiddendoors:" .. nodename .. "_" .. modname  "2",
 		recipe = {
 		{"", "", ""},
-		{"default:glass", "default:" .. material , ""},
+		{"default:glass", modname .. ":" .. nodename , ""},
 		{"", "", ""}
 		}
 	})
 end
 
-hiddendoors.register_door("obsidian", "Obsidian")
-hiddendoors.register_door("stone", "Stone")
-hiddendoors.register_door("desert_stone_brick", "Desert Stone Brick")
-hiddendoors.register_door("stone_brick", "Stone Brick")
-hiddendoors.register_door("tree", "Tree")
-hiddendoors.register_door("dirt", "Dirt")
-hiddendoors.register_door("desert_stone", "Desert Stone")
-hiddendoors.register_door("brick", "Brick")
-hiddendoors.register_door("wood", "Wood")
+-- Default nodes
+
+local default_nodes = {
+	{"stone", "stone"},
+	{"brick", "brick"},
+	{"desert_stone", "desert_stone"},
+	{"tree", "tree"},
+	{"dirt","dirt"},
+	{"wood", "wood"},
+	{"obsidian", "obsidian"},
+	{"stonebrick", "stone_brick"},
+	{"desert_stonebrick", "desert_stone_brick"},
+}
+
+for _, row in pairs(default_nodes) do
+	local ndef = minetest.registered_nodes["default:" ..row[1]]
+	local texture = "default_" ..row[2].. ".png"
+	hiddendoors.register_door("default", row[1], ndef.description, texture) 
+end
