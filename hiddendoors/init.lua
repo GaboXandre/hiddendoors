@@ -9,12 +9,7 @@ function hiddendoors.register_door(modname, nodename, description, tiles)
 	climbable = true,
 	is_ground_content = false,
 	inventory_image = "hiddendoors_" .. nodename .. "_" .. modname .. "_inventory.png",
-	tiles = 
-		if texture == nil then
-			{modname .. "_" .. material .. ".png"},
-		else
-			{texture}
-		end
+	tiles = {tiles}
 	groups = {cracky = 2},
 	})
 	
@@ -35,7 +30,7 @@ local default_nodes = {
 	{"brick", "brick"},
 	{"desert_stone", "desert_stone"},
 	{"tree", "tree"},
-	{"dirt","dirt},
+	{"dirt","dirt"},
 	{"wood", "wood"},
 	{"obsidian", "obsidian"},
 	{"stonebrick", "stone_brick"},
@@ -43,8 +38,7 @@ local default_nodes = {
 }
 
 for _, row in pairs(default_nodes) do
-	local nodename = "default:" ..row[1]
-	local ndef = minetest.registered_nodes[nodename]
+	local ndef = minetest.registered_nodes["default:" ..row[1]]
 	local texture = "default_" ..row[2].. ".png"
 	hiddendoors.register_door("default", row[1], ndef.description, texture) 
 end
