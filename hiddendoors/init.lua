@@ -25,8 +25,8 @@ end
 
 hiddendoors.register_door("obsidian", "Obsidian")
 hiddendoors.register_door("stone", "Stone")
-hiddendoors.register_door("desert_stone_brick", "Desert Stone Brick")
-hiddendoors.register_door("stone_brick", "Stone Brick")
+hiddendoors.register_door("desert_stonebrick", "Desert Stone Brick")
+hiddendoors.register_door("stonebrick", "Stone Brick")
 hiddendoors.register_door("tree", "Tree")
 hiddendoors.register_door("dirt", "Dirt")
 hiddendoors.register_door("desert_stone", "Desert Stone")
